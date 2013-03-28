@@ -103,7 +103,7 @@ namespace dieBug
         {
             var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_hover.png", UriKind.Relative);
             f1_close.Source = new BitmapImage(uriSource);
-            Process.GetCurrentProcess().Kill();
+            Environment.Exit(0);
         }
 
         private void OpenSettings()
