@@ -37,5 +37,92 @@ namespace dieBug
             request.KeepAlive = true;
             throw new NotImplementedException();
         }
+
+        private void textBox_DeliverFrom_PreviewKeyDown(object sender, KeyEventArgs e)
+        {   
+            if (e.Key == Key.Enter)
+            {
+                if (descriptionbox.LineCount > 5)
+                    e.Handled = true;
+            }
+        }
+
+        private void newphoto_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_new_hover.png", UriKind.Relative);
+            newphoto.Source = new BitmapImage(uriSource);
+        }
+
+        private void newphoto_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_new_normal.png", UriKind.Relative);
+            newphoto.Source = new BitmapImage(uriSource);
+        }
+
+        private void newphoto_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_new_active.png", UriKind.Relative);
+            newphoto.Source = new BitmapImage(uriSource);
+        }
+
+        private void newphoto_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_new_hover.png", UriKind.Relative);
+            newphoto.Source = new BitmapImage(uriSource);
+        }
+
+        // --WOOOOOOOH EPIC UPLOAD_BUTTON
+
+        private void upload_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_upload_hover.png", UriKind.Relative);
+            upload.Source = new BitmapImage(uriSource);
+        }
+
+        private void upload_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_upload_normal.png", UriKind.Relative);
+            upload.Source = new BitmapImage(uriSource);
+        }
+
+        private void upload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_upload_active.png", UriKind.Relative);
+            upload.Source = new BitmapImage(uriSource);
+        }
+
+        private void upload_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_upload_hover.png", UriKind.Relative);
+            upload.Source = new BitmapImage(uriSource);
+        }
+
+        // --WOOOOOOOH EPIC DELETE_BUTTON
+
+        private void delete_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_delete_hover.png", UriKind.Relative);
+            delete.Source = new BitmapImage(uriSource);
+        }
+
+        private void delete_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_delete_normal.png", UriKind.Relative);
+            delete.Source = new BitmapImage(uriSource);
+        }
+
+        private void delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_delete_active.png", UriKind.Relative);
+            delete.Source = new BitmapImage(uriSource);
+        }
+
+        private void delete_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f2_delete_hover.png", UriKind.Relative);
+            delete.Source = new BitmapImage(uriSource);
+        }
+
+
     }
 }

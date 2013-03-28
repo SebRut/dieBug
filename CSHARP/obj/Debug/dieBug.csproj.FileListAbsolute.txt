@@ -34,3 +34,5 @@ D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\dieBug.ex
 D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\dieBug.pdb
 C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\ImageInfoWindow.baml
 C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\ImageInfoWindow.g.cs
+D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\ImageInfoWindow.baml
+D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\ImageInfoWindow.g.cs
