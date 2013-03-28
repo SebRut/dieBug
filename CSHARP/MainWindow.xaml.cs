@@ -26,5 +26,29 @@ namespace dieBug
         {
             InitializeComponent();
         }
+
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_hover.png", UriKind.Relative);
+            f1_shoot.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_shoot_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_normal.png", UriKind.Relative);
+            f1_shoot.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_shoot_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_active.png", UriKind.Relative);
+            f1_shoot.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_shoot_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_normal.png", UriKind.Relative);
+            f1_shoot.Source = new BitmapImage(uriSource);
+        }
     }
 }
