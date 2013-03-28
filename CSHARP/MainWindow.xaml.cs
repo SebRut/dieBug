@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace dieBug
 {
@@ -29,14 +30,18 @@ namespace dieBug
 
         private void Image_MouseEnter(object sender, MouseEventArgs e)
         {
-            var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_hover.png", UriKind.Relative);
-            f1_shoot.Source = new BitmapImage(uriSource);
+            //var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_hover.png", UriKind.Relative);
+            //f1_shoot.Source = new BitmapImage(uriSource);
+            Storyboard rot1 = (Storyboard)FindResource("f1_shoot_rot1");
+            rot1.Begin(this);
         }
 
         private void f1_shoot_MouseLeave(object sender, MouseEventArgs e)
         {
-            var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_normal.png", UriKind.Relative);
-            f1_shoot.Source = new BitmapImage(uriSource);
+            //var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_normal.png", UriKind.Relative);
+            //f1_shoot.Source = new BitmapImage(uriSource);
+            Storyboard rot2 = (Storyboard)FindResource("f1_shoot_rot2");
+            rot2.Begin(this);
         }
 
         private void f1_shoot_MouseDown(object sender, MouseButtonEventArgs e)
@@ -49,6 +54,41 @@ namespace dieBug
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_normal.png", UriKind.Relative);
             f1_shoot.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_background_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Window_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_normal.png", UriKind.Relative);
+            f1_shoot.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_close_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_hover.png", UriKind.Relative);
+            f1_close.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_close_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_normal.png", UriKind.Relative);
+            f1_close.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_active.png", UriKind.Relative);
+            f1_close.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_close_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_hover.png", UriKind.Relative);
+            f1_close.Source = new BitmapImage(uriSource);
         }
     }
 }

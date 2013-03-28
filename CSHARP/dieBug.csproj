@@ -121,6 +121,29 @@
     <Resource Include="Images\f1_button_shoot_active.png" />
     <Resource Include="Images\f1_button_shoot_hover.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\f2_back.png" />
+    <Resource Include="Images\f2_delete_active.png" />
+    <Resource Include="Images\f2_delete_hover.png" />
+    <Resource Include="Images\f2_delete_normal.png" />
+    <Resource Include="Images\f2_input_description.png" />
+    <Resource Include="Images\f2_mask.png" />
+    <Resource Include="Images\f2_new_active.png" />
+    <Resource Include="Images\f2_new_hover.png" />
+    <Resource Include="Images\f2_new_normal.png" />
+    <Resource Include="Images\f2_upload_active.png" />
+    <Resource Include="Images\f2_upload_hover.png" />
+    <Resource Include="Images\f2_upload_normal.png" />
+    <Resource Include="Images\f3_back.png" />
+    <Resource Include="Images\f3_button_close_active.png" />
+    <Resource Include="Images\f3_button_close_hover.png" />
+    <Resource Include="Images\f3_button_close_normal.png" />
+    <Resource Include="Images\f3_input_url.png" />
+    <Resource Include="Images\f3_mask.png" />
+    <Resource Include="Images\fall_button_close_active.png" />
+    <Resource Include="Images\fall_button_close_hover.png" />
+    <Resource Include="Images\fall_button_close_normal.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
