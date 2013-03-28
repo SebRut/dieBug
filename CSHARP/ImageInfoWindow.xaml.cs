@@ -69,8 +69,7 @@ namespace dieBug
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f2_new_hover.png", UriKind.Relative);
             newphoto.Source = new BitmapImage(uriSource);
-            File.Delete(imagePath);
-            this.Close();
+            this.Close();        
         }
 
         // --WOOOOOOOH EPIC UPLOAD_BUTTON
@@ -124,7 +123,6 @@ namespace dieBug
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f2_delete_hover.png", UriKind.Relative);
             delete.Source = new BitmapImage(uriSource);
-            File.Delete(imagePath);
             Environment.Exit(0);
         }
 
