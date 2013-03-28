@@ -32,3 +32,5 @@ D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\dieBug.Pr
 D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\dieBug.csproj.GenerateResource.Cache
 D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\dieBug.exe
 D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\dieBug.pdb
+C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\ImageInfoWindow.baml
+C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\ImageInfoWindow.g.cs

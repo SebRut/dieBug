@@ -45,6 +45,12 @@ namespace dieBug
                 Directory.CreateDirectory(shotDir);
         }
 
+        private void OpenImageInfo(string imagePath)
+        {
+            ImageInfoWindow iiw = new ImageInfoWindow(imagePath);
+            iiw.Show();
+        }
+
         private void f1_shoot_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_active.png", UriKind.Relative);
@@ -61,6 +67,7 @@ namespace dieBug
             string filename = DateTime.Now.ToShortDateString().Replace(".", "-") + "-" + DateTime.Now.ToShortTimeString().Replace(":", "-") + "-" + DateTime.Now.Second.ToString() + ".bmp";
             string path = Path.Combine(shotDir, filename);
             screenShot.Save(path);
+            OpenImageInfo(path);
         }
 
         private void f1_background_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -97,6 +104,18 @@ namespace dieBug
             var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_hover.png", UriKind.Relative);
             f1_close.Source = new BitmapImage(uriSource);
             Process.GetCurrentProcess().Kill();
+        }
+
+        private void OpenSettings()
+        {
+            SettingsWindow sw = new SettingsWindow();
+            sw.Show();
+        }
+
+        private void OpenAbout()
+        {
+            AboutWindow aw = new AboutWindow();
+            aw.Show();
         }
     }
 }
