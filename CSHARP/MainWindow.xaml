@@ -1,7 +1,7 @@
 ﻿<Window x:Class="dieBug.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="139" Width="126" WindowStyle="None" ResizeMode="NoResize" SizeToContent="WidthAndHeight" AllowsTransparency="True" Background="#00000000" MouseLeave="Window_MouseLeave">
+        Title="MainWindow" Height="239" Width="226" WindowStyle="None" ResizeMode="NoResize" SizeToContent="WidthAndHeight" AllowsTransparency="True" Background="#00000000" MouseLeave="Window_MouseLeave">
     <Window.Resources>
         <Storyboard x:Key="f1_shoot_rot1">
             <DoubleAnimation
@@ -24,7 +24,8 @@
     </Window.Resources>
 
     <Grid Height="99" Width="100" Background="#00000000">
-        <Image Height="99" HorizontalAlignment="Left" Name="f1_background" Stretch="Fill" VerticalAlignment="Top" Width="100" Source="/dieBug;component/Images/f1_back_normal.png" MouseLeftButtonDown="f1_background_MouseLeftButtonDown" />
+        <Image Height="99" HorizontalAlignment="Left" Name="f1_background" Stretch="Fill" VerticalAlignment="Top" Width="100" Source="/dieBug;component/Images/f1_back_normal.png" MouseLeftButtonDown="f1_background_MouseLeftButtonDown">
+        </Image>
         <Image RenderTransformOrigin="0.5, 0.5" Height="67" HorizontalAlignment="Center" Name="f1_shoot" Stretch="Fill" VerticalAlignment="Center" Width="67" Source="/dieBug;component/Images/f1_button_shoot_normal.png" MouseEnter="Image_MouseEnter" MouseLeave="f1_shoot_MouseLeave" MouseDown="f1_shoot_MouseDown" MouseUp="f1_shoot_MouseUp">
             <Image.RenderTransform>
                 <RotateTransform/>
