@@ -26,7 +26,7 @@
     <Grid Height="99" Width="100" Background="#00000000">
         <Image Height="99" HorizontalAlignment="Left" Name="f1_background" Stretch="Fill" VerticalAlignment="Top" Width="100" Source="/dieBug;component/Images/f1_back_normal.png" MouseLeftButtonDown="f1_background_MouseLeftButtonDown">
         </Image>
-        <Image RenderTransformOrigin="0.5, 0.5" Height="67" HorizontalAlignment="Center" Name="f1_shoot" Stretch="Fill" VerticalAlignment="Center" Width="67" Source="/dieBug;component/Images/f1_button_shoot_normal.png" MouseEnter="Image_MouseEnter" MouseLeave="f1_shoot_MouseLeave" MouseDown="f1_shoot_MouseDown" MouseUp="f1_shoot_MouseUp">
+        <Image RenderTransformOrigin="0.5, 0.5" Height="67" HorizontalAlignment="Center" Name="f1_shoot" Stretch="Fill" VerticalAlignment="Center" Width="67" Source="/dieBug;component/Images/f1_button_shoot_normal.png" MouseDown="f1_shoot_MouseDown" MouseUp="f1_shoot_MouseUp">
             <Image.RenderTransform>
                 <RotateTransform/>
             </Image.RenderTransform>

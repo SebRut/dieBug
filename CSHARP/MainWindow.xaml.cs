@@ -28,22 +28,6 @@ namespace dieBug
             InitializeComponent();
         }
 
-        private void Image_MouseEnter(object sender, MouseEventArgs e)
-        {
-            //var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_hover.png", UriKind.Relative);
-            //f1_shoot.Source = new BitmapImage(uriSource);
-            Storyboard rot1 = (Storyboard)FindResource("f1_shoot_rot1");
-            rot1.Begin(this);
-        }
-
-        private void f1_shoot_MouseLeave(object sender, MouseEventArgs e)
-        {
-            //var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_normal.png", UriKind.Relative);
-            //f1_shoot.Source = new BitmapImage(uriSource);
-            Storyboard rot2 = (Storyboard)FindResource("f1_shoot_rot2");
-            rot2.Begin(this);
-        }
-
         private void f1_shoot_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_active.png", UriKind.Relative);
