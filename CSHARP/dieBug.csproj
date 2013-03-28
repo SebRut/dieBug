@@ -62,6 +62,7 @@
     <Compile Include="ImageInfoWindow.xaml.cs">
       <DependentUpon>ImageInfoWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="ScreenCapture.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>

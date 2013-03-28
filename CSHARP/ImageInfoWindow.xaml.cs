@@ -10,6 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Net;
+using System.IO;
+using System.Drawing;
 
 namespace dieBug
 {
@@ -23,8 +26,16 @@ namespace dieBug
         {
             InitializeComponent();
             this.imagePath = imagePath;
+            image1.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
         }
-
-
+        
+        private void TransmitPicture()
+        {
+            HttpWebRequest request = (HttpWebRequest) WebRequest.Create("http://lol.de/upload.php");
+            request.Method = WebRequestMethods.Http.Post;
+            request.ContentType = "multipart/form-data";
+            request.KeepAlive = true;
+            throw new NotImplementedException();
+        }
     }
 }
