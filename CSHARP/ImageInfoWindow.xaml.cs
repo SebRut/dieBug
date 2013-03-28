@@ -97,6 +97,7 @@ namespace dieBug
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f2_upload_hover.png", UriKind.Relative);
             upload.Source = new BitmapImage(uriSource);
+            TransmitPicture();
         }
 
         // --WOOOOOOOH EPIC DELETE_BUTTON
