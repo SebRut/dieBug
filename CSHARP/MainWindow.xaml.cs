@@ -31,6 +31,7 @@ namespace dieBug
             baseDir = Environment.GetFolderPath((Environment.SpecialFolder.ApplicationData)) + Path.DirectorySeparatorChar + "dieBug";
             shotDir = baseDir + Path.DirectorySeparatorChar + "shots";
             InitializeComponent();
+            InitFileSystem();
         }
         private string baseDir;
         private string shotDir;
