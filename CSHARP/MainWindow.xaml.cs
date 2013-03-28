@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using System.IO;
+using Path = System.IO.Path;
 
 namespace dieBug
 {
@@ -25,7 +27,21 @@ namespace dieBug
     {
         public MainWindow()
         {
+
+            baseDir = Environment.GetFolderPath((Environment.SpecialFolder.ApplicationData)) + Path.DirectorySeparatorChar + "dieBug";
+            shotDir = baseDir + Path.DirectorySeparatorChar + "shots";
             InitializeComponent();
+        }
+        private string baseDir;
+        private string shotDir;
+
+
+        private void InitFileSystem()
+        {
+            if (!Directory.Exists(baseDir))
+                Directory.CreateDirectory(baseDir);
+            if (!Directory.Exists(shotDir))
+                Directory.CreateDirectory(shotDir);
         }
 
         private void f1_shoot_MouseDown(object sender, MouseButtonEventArgs e)
@@ -38,6 +54,12 @@ namespace dieBug
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_normal.png", UriKind.Relative);
             f1_shoot.Source = new BitmapImage(uriSource);
+            this.WindowState = WindowState.Minimized;
+            Bitmap screenShot = ScreenCapture.Screen();
+            this.WindowState = WindowState.Normal;
+            string filename = DateTime.Now.ToShortDateString().Replace(".", "-") + "-" + DateTime.Now.ToShortTimeString().Replace(":", "-") + "-" + DateTime.Now.Second.ToString() + ".bmp";
+            string path = Path.Combine(shotDir, filename);
+            screenShot.Save(path);
         }
 
         private void f1_background_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
