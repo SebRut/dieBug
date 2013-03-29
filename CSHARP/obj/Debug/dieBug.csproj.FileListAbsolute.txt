@@ -1,6 +1,5 @@
 C:\Users\Sebastian\Documents\dieBug\CSHARP\dieBug\bin\Debug\dieBug.exe.config
 C:\Users\Sebastian\Documents\dieBug\CSHARP\bin\Debug\dieBug.exe.config
-C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\dieBug.csprojResolveAssemblyReference.cache
 C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\AboutWindow.baml
 C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\MainWindow.baml
 C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\SettingsWindow.baml
@@ -36,3 +35,4 @@ C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\ImageInfoWindow.baml
 C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\ImageInfoWindow.g.cs
 D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\ImageInfoWindow.baml
 D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\ImageInfoWindow.g.cs
+C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\dieBug.csprojResolveAssemblyReference.cache

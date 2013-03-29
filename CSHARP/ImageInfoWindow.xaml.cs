@@ -33,9 +33,9 @@ namespace dieBug
         private void TransmitPicture()
         {
             NameValueCollection nvc = new NameValueCollection();
-            nvc.Add("desc", "");
-            nvc.Add("btn-submit-photo", "Upload");
-            HttpUploadFile("http://your.server.com/upload", imagePath, "file", "image/bmp", nvc);
+            nvc.Add("desc", descriptionbox.Text);
+            //TODO URL from Settings
+            HttpUploadFile("http://diebug.franz-bender.de/upload.php", imagePath, "datei", "image/png", nvc);
         }
 
         private void textBox_DeliverFrom_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -168,12 +168,13 @@ namespace dieBug
             rs.Close();
 
             WebResponse wresp = null;
+            string response = String.Empty;
             try
             {
                 wresp = wr.GetResponse();
                 Stream stream2 = wresp.GetResponseStream();
                 StreamReader reader2 = new StreamReader(stream2);
-                return reader2.ReadToEnd();
+                response = reader2.ReadToEnd();
                 reader2.Dispose();
             }
             catch (Exception ex)
@@ -182,12 +183,14 @@ namespace dieBug
                 {
                     wresp.Close();
                     wresp = null;
+                    response= "Error";
                 }
             }
             finally
             {
                 wr = null;
             }
+            return response;
         }
     }
 }

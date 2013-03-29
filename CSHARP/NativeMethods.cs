@@ -8,11 +8,11 @@ namespace dieBug
     {
         [return: MarshalAs(UnmanagedType.Bool)]
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern bool GetWindowInfo(IntPtr hwnd, ref NativeMethods.WINDOWINFO pwi);
+        internal static extern bool GetWindowInfo(IntPtr hwnd, ref NativeMethods.WINDOWINFO pwi);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
+        internal static extern bool SetForegroundWindow(IntPtr hWnd);
 
         [StructLayout(LayoutKind.Sequential)]
         // ReSharper disable InconsistentNaming

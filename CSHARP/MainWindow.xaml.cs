@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.IO;
 using Path = System.IO.Path;
+using System.Drawing.Imaging;
 
 namespace dieBug
 {
@@ -64,9 +65,9 @@ namespace dieBug
             this.WindowState = WindowState.Minimized;
             Bitmap screenShot = ScreenCapture.Screen();
             this.WindowState = WindowState.Normal;
-            string filename = DateTime.Now.ToShortDateString().Replace(".", "-") + "-" + DateTime.Now.ToShortTimeString().Replace(":", "-") + "-" + DateTime.Now.Second.ToString() + ".bmp";
+            string filename = DateTime.Now.ToShortDateString().Replace(".", "-") + "-" + DateTime.Now.ToShortTimeString().Replace(":", "-") + "-" + DateTime.Now.Second.ToString() + ".png";
             string path = Path.Combine(shotDir, filename);
-            screenShot.Save(path);
+            screenShot.Save(path, ImageFormat.Png);
             OpenImageInfo(path);
         }
 
