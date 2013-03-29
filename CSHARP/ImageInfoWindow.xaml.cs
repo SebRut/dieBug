@@ -35,7 +35,7 @@ namespace dieBug
             NameValueCollection nvc = new NameValueCollection();
             nvc.Add("desc", descriptionbox.Text);
             //TODO URL from Settings
-            HttpUploadFile("http://diebug.franz-bender.de/upload.php", imagePath, "datei", "image/bmp", nvc);
+            HttpUploadFile("http://diebug.franz-bender.de/upload.php", imagePath, "datei", "image/png", nvc);
         }
 
         private void textBox_DeliverFrom_PreviewKeyDown(object sender, KeyEventArgs e)
