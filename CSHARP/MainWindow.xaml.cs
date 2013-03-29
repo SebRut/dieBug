@@ -62,13 +62,24 @@ namespace dieBug
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f1_button_shoot_normal.png", UriKind.Relative);
             f1_shoot.Source = new BitmapImage(uriSource);
+            ShootScreen();
+        }
+
+        private void ShootScreen()
+        {
             this.WindowState = WindowState.Minimized;
             Bitmap screenShot = ScreenCapture.Screen();
             this.WindowState = WindowState.Normal;
-            string filename = DateTime.Now.ToShortDateString().Replace(".", "-") + "-" + DateTime.Now.ToShortTimeString().Replace(":", "-") + "-" + DateTime.Now.Second.ToString() + ".png";
+            string filename = DateTime.Now.ToShortDateString().Replace(".", "-") + "-" +
+                              DateTime.Now.ToShortTimeString().Replace(":", "-") + "-" + DateTime.Now.Second.ToString() + ".png";
             string path = Path.Combine(shotDir, filename);
             screenShot.Save(path, ImageFormat.Png);
             OpenImageInfo(path);
+        }
+
+        private void ShootScreen(object sender, ExecutedRoutedEventArgs executedRoutedEventArgs)
+        {
+            ShootScreen();
         }
 
         private void f1_background_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

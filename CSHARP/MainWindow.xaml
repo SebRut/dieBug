@@ -21,6 +21,7 @@
             Duration="0:0:0.5"
             RepeatBehavior="0x" />
         </Storyboard>
+        <RoutedUICommand x:Key="ShootCommand" Text="Shoot" />
     </Window.Resources>
 
     <Grid Height="99" Width="100" Background="#00000000">
@@ -50,4 +51,11 @@
         </Image>
         <Image Name="f1_close" Height="15" HorizontalAlignment="Left" Margin="10,10,0,0" Stretch="Fill" VerticalAlignment="Top" Width="14" Source="/dieBug;component/Images/fall_button_close_normal.png" MouseEnter="f1_close_MouseEnter" MouseLeave="f1_close_MouseLeave" MouseLeftButtonDown="f1_close_MouseLeftButtonDown" MouseLeftButtonUp="f1_close_MouseLeftButtonUp" />
     </Grid>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource ShootCommand}" Executed="ShootScreen" />
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Key="S" Modifiers="Alt" Command="{StaticResource ShootCommand}" />
+    </Window.InputBindings>
 </Window>
