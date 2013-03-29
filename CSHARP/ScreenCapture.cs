@@ -42,5 +42,14 @@ namespace dieBug
                 return bitmap;
             }
         }
+
+        public static IntPtr GetWindowHandleByMouse()
+        {
+            NativeMethods.POINT mPoint = new NativeMethods.POINT();
+            NativeMethods.GetCursorPos(out mPoint);
+            IntPtr windowHandle = NativeMethods.WindowFromPoint(mPoint);
+            return windowHandle;
+        }
+
     }
 }

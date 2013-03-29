@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,7 +29,6 @@ namespace dieBug
     {
         public MainWindow()
         {
-
             baseDir = Environment.GetFolderPath((Environment.SpecialFolder.ApplicationData)) + Path.DirectorySeparatorChar + "dieBug";
             shotDir = baseDir + Path.DirectorySeparatorChar + "shots";
             InitializeComponent();
@@ -36,6 +36,8 @@ namespace dieBug
         }
         private string baseDir;
         private string shotDir;
+
+        private bool WindowPickModeEnabled = false;
 
 
         private void InitFileSystem()
@@ -77,9 +79,22 @@ namespace dieBug
             OpenImageInfo(path);
         }
 
+        private void ShootWindowByMouse()
+        {
+            this.WindowState = WindowState.Minimized;
+            Bitmap screenShot = ScreenCapture.Window(ScreenCapture.GetWindowHandleByMouse());
+            this.WindowState = WindowState.Normal;
+            string filename = DateTime.Now.ToShortDateString().Replace(".", "-") + "-" +
+                              DateTime.Now.ToShortTimeString().Replace(":", "-") + "-" + DateTime.Now.Second.ToString() + ".png";
+            string path = Path.Combine(shotDir, filename);
+            screenShot.Save(path, ImageFormat.Png);
+            OpenImageInfo(path);
+        }
+
         private void ShootScreen(object sender, ExecutedRoutedEventArgs executedRoutedEventArgs)
         {
-            ShootScreen();
+            //ShootScreen();
+            ShootWindowByMouse();
         }
 
         private void f1_background_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -128,6 +143,28 @@ namespace dieBug
         {
             AboutWindow aw = new AboutWindow();
             aw.Show();
+        }
+
+        private void WindowPickMode()
+        {
+            while(WindowPickModeEnabled)
+            {
+                IntPtr windowHandle = ScreenCapture.GetWindowHandleByMouse();
+                NativeMethods.SetForegroundWindow(windowHandle);
+
+            }
+        }
+
+        private void EnableWindowPickMode(object sender, ExecutedRoutedEventArgs executedRoutedEventArgs)
+        {
+            WindowPickModeEnabled = true;
+            Thread t = new Thread(WindowPickMode);
+            t.Start();
+        }
+
+        private void DisableWindowPickMode(object sender, ExecutedRoutedEventArgs executedRoutedEventArgs)
+        {
+            WindowPickModeEnabled = false;
         }
     }
 }

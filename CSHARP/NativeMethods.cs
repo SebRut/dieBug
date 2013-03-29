@@ -174,6 +174,23 @@ namespace dieBug
                 return false;
             }
         }
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr WindowFromPoint(POINT mPoint);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool GetCursorPos(out POINT lpPoint);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int X;
+            public int Y;
+        }
+
+// Or use System.Drawing.Point (Forms only)
+
         // ReSharper restore FieldCanBeMadeReadOnly.Local
         // ReSharper restore MemberCanBePrivate.Local
         // ReSharper restore InconsistentNaming

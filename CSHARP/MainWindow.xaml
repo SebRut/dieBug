@@ -22,6 +22,8 @@
             RepeatBehavior="0x" />
         </Storyboard>
         <RoutedUICommand x:Key="ShootCommand" Text="Shoot" />
+        <RoutedUICommand x:Key="StartPickerCommand" Text="Start Picker" />
+        <RoutedUICommand x:Key="StopPickerCommand" Text="Stop Picker" />
     </Window.Resources>
 
     <Grid Height="99" Width="100" Background="#00000000">
@@ -53,9 +55,13 @@
     </Grid>
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource ShootCommand}" Executed="ShootScreen" />
+        <CommandBinding Command="{StaticResource StartPickerCommand}" Executed="EnableWindowPickMode" />
+        <CommandBinding Command="{StaticResource StopPickerCommand}" Executed="DisableWindowPickMode" />
     </Window.CommandBindings>
 
     <Window.InputBindings>
         <KeyBinding Key="S" Modifiers="Alt" Command="{StaticResource ShootCommand}" />
+        <KeyBinding Key="P" Modifiers="Alt" Command="{StaticResource StartPickerCommand}" />
+        <KeyBinding Key="E" Modifiers="Alt" Command="{StaticResource StopPickerCommand}" />
     </Window.InputBindings>
 </Window>
