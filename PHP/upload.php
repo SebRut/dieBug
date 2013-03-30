@@ -1,4 +1,10 @@
 <?php
+if(!isset($_FILES['datei']['name']) || !isset($_POST['description'])) {
+	for($i=0; $i<=1000; $i++) {
+		echo "error<br/>";
+	}
+	die();
+}
 $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
 //if($dateityp[2] == 3) {
 	if($_FILES['datei']['size'] <  5242880) {

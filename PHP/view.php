@@ -1,6 +1,6 @@
 <?php
 if(file_exists("./".$_GET['id']."/") == false) {
-	echo "<h1>I'm 40 and I know it!</h1>";
+	echo "<h1>I'm 404 and I know it!</h1>";
 	die();
 }
 $xml = simplexml_load_file('./'.$_GET['id'].'/screenshot.xml');
