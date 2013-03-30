@@ -43,6 +43,7 @@ namespace dieBug
         private string UploadPassword;
         private string UploadPath;
         private string description = String.Empty;
+        private bool isbiggered = false;
 
         private void TransmitPicture()
         {
@@ -54,19 +55,23 @@ namespace dieBug
                     upload.Visibility = Visibility.Hidden;
                     newphoto.Visibility = Visibility.Hidden;
                     delete.Visibility = Visibility.Hidden;
-
+                    progressbarimg.Visibility = Visibility.Visible;
+                    progressbarbar.Visibility = Visibility.Visible;
                 }));
             string desc_encoded = HtmlEncode(description);
             nvc.Add("description", desc_encoded);
             string response = HttpUploadFile((string)UploadPath, imagePath, "datei", "image/png", nvc);
-            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(delegate()
-            {
-                UploadBar.Value = 100;
-                UploadBar.UpdateLayout();
-            }));
-            if (MessageBox.Show("URL to Share\n" + response + "\nDo you want to open it now?", "Upload Finished", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            /*if (MessageBox.Show("URL to Share\n" + response + "\nDo you want to open it now?", "Upload Finished", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 Process.Start(response);
-            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(this.Close));
+            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(this.Close));*/
+            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Input, new Action(delegate()
+            {
+                progressbarimg.Visibility = Visibility.Hidden;
+                progressbarbar.Visibility = Visibility.Hidden;
+                urlimage.Visibility = Visibility.Visible;
+                urlbox.Visibility = Visibility.Visible;
+                urlbox.Text = response;
+            }));
         }
 
         private void textBox_DeliverFrom_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -144,7 +149,7 @@ namespace dieBug
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f2_upload_hover.png", UriKind.Relative);
             upload.Source = new BitmapImage(uriSource);
-            
+
             if (UploadPath.Equals(String.Empty))
             {
 
@@ -208,6 +213,14 @@ namespace dieBug
             wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
             Stream rs = wr.GetRequestStream();
+            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(delegate()
+            {
+                SetProgressbarToPercentage(10);
+            }));
+
+
+            int percentperkey = 40/nvc.Keys.Count;
+            double value = 10;
 
             string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
             foreach (string key in nvc.Keys)
@@ -216,14 +229,10 @@ namespace dieBug
                 string formitem = string.Format(formdataTemplate, key, nvc[key]);
                 byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
                 rs.Write(formitembytes, 0, formitembytes.Length);
+                SetProgressbarToPercentage(value + percentperkey);
+                value += percentperkey;
             }
             rs.Write(boundarybytes, 0, boundarybytes.Length);
-
-            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(delegate()
-            {
-                UploadBar.Value += 10;
-                UploadBar.UpdateLayout();
-            }));
 
             string headerTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n";
             string header = string.Format(headerTemplate, paramName, file, contentType);
@@ -234,22 +243,19 @@ namespace dieBug
             byte[] buffer = new byte[4096];
             int bytesRead = 0;
 
-            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(delegate()
-            {
-                UploadBar.Value = 25;
-                UploadBar.UpdateLayout();
-            }));
+            int parts = (int)fileStream.Length/4096;
+            double percentperpart = 40.0 / parts;
+            value = 50;
+
             while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
             {
                 rs.Write(buffer, 0, bytesRead);
+
+                SetProgressbarToPercentage(value + percentperpart);
+                value += percentperpart;
             }
             fileStream.Close();
-            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(delegate()
-            {
-                UploadBar.Value = 75;
-                UploadBar.UpdateLayout();
-            }));
-
+            
             byte[] trailer = System.Text.Encoding.UTF8.GetBytes("\r\n--" + boundary + "--\r\n");
             rs.Write(trailer, 0, trailer.Length);
             rs.Close();
@@ -261,8 +267,7 @@ namespace dieBug
                 wresp = wr.GetResponse();
                 this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(delegate()
                 {
-                    UploadBar.Value = 95;
-                    UploadBar.UpdateLayout();
+                    SetProgressbarToPercentage(95);
                 }));
                 Stream stream2 = wresp.GetResponseStream();
                 StreamReader reader2 = new StreamReader(stream2);
@@ -281,8 +286,34 @@ namespace dieBug
             finally
             {
                 wr = null;
+                this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(delegate()
+                {
+                    SetProgressbarToPercentage(100);
+                }));
             }
             return response;
+        }
+
+        private void SetProgressbarToPercentage(double value)
+        {
+            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(delegate()
+            {
+                progressbarbar.Width = 384 / 100 * value;
+            }));
+        }
+
+        private void image1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (!isbiggered)
+            {
+                image1.Width *= 1.5;
+                isbiggered = true;
+            }
+            else
+            {
+                image1.Width *= 0.75;
+                isbiggered = false;
+            }
         }
     }
 }
