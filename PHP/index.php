@@ -8,7 +8,7 @@
 <body>
 <form action="upload.php" method="post" enctype="multipart/form-data"> 
 <input type="file" name="datei"><br>
-<input type="text" name="description"><br>
+<textarea name="description"></textarea><br>
 <input type="submit" value="Hochladen"> 
 </form>
 </body>

@@ -108,6 +108,31 @@ namespace dieBug
             Environment.Exit(0);
         }
 
+        private void f1_settings_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_options_hover.png", UriKind.Relative);
+            f1_settings.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_settings_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_options_normal.png", UriKind.Relative);
+            f1_settings.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_settings_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_options_active.png", UriKind.Relative);
+            f1_settings.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_settings_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_options_hover.png", UriKind.Relative);
+            f1_settings.Source = new BitmapImage(uriSource);
+            OpenSettings();
+        }
+
         private void OpenSettings()
         {
             SettingsWindow sw = new SettingsWindow();
@@ -118,11 +143,6 @@ namespace dieBug
         {
             AboutWindow aw = new AboutWindow();
             aw.Show();
-        }
-
-        private void f1_settings_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            OpenSettings();
         }
     }
 }

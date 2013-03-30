@@ -168,6 +168,15 @@
   <ItemGroup>
     <Resource Include="Images\progressbar_green.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fall_button_options_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fall_button_options_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fall_button_options_normal.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

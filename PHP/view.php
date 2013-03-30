@@ -3,13 +3,15 @@ if(file_exists("./".$_GET['id']."/") == false) {
 	echo "<h1>I'm 404 and I know it!</h1>";
 	die();
 }
-$xml = simplexml_load_file('./'.$_GET['id'].'/screenshot.xml');
+$xml = simplexml_load_file('./'.$_GET['id'].'/screenshot.xml', 'SimpleXMLElement', LIBXML_NOCDATA);
 
 $att = $xml->attributes();
 
-$datei = "../".$_GET['id']."/".$att["filename"];
+$datei = "../".$_GET['id']."/".htmlentities($att["filename"]);
 $description = $xml->content[0];
 $datum = date("d.m.Y",(string) $xml->attributes()->timestamp);
+$hexcolor = $xml->attributes()->hexcolor;
+$comphexcolor = $xml->attributes()->comphexcolor;
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -26,11 +28,14 @@ $datum = date("d.m.Y",(string) $xml->attributes()->timestamp);
 	<body>
     	<div id="sidebar">
         	<div id="sidebarcontainer">
-            	<img id="thumbimg" src="<?php echo $datei; ?>.thumb.png"/><br/>
+            	<div align="right">
+                	<input type="button" value="Großes Bild laden" onClick="$('#srcimg').attr('src','<?php echo $datei; ?>.big.png'); $(this).slideUp();"/>
+                </div>
+            	<img id="thumbimg" src="<?php echo $datei; ?>.thumb.png" style="border:solid 5px <?php echo $comphexcolor; ?>;"/><br/>
                 <div id="date"><?php echo $datum; ?></div>
                 <div id="description">
                 	<div style="border-bottom:solid 1px #000000; width:100%; font-size:18px; margin-bottom:-15px">BESCHREIBUNG</div><br/>
-                	<?php echo $description; ?>
+                	<?php echo nl2br(htmlentities($description, ENT_NOQUOTES, 'UTF-8')); ?>
                 </div>
             </div>
         </div>
@@ -41,13 +46,9 @@ $datum = date("d.m.Y",(string) $xml->attributes()->timestamp);
         	
         </div>
 		<div id="image">
-        	<img id="srcimg" src="<?php echo $datei; ?>"/>
+        	<img id="srcimg" src="<?php echo $datei; ?>.small.png"/>
         </div>
-        <div id="vignette">
-        	
-        </div>
-        <div id="background">
-        	<canvas id="bcanvas" width="100%" height="100%"></canvas>
-        </div>
+        <div id="vignette"></div>
+        <div id="background" style="background-color: <?php echo $hexcolor; ?>"></div>
 	</body>
 </html>
