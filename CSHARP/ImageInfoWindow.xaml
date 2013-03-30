@@ -11,9 +11,19 @@
             <Image Width="384" Height="125" Source="/dieBug;component/Images/f2_input_description.png" Margin="128,313,129,190"></Image>
             <TextBox TextBlock.LineHeight="20" AcceptsReturn="True" TextBlock.LineStackingStrategy="BlockLineHeight" Height="129" HorizontalAlignment="Left" Margin="132,314,0,0" Name="descriptionbox" VerticalAlignment="Top" Width="375" Background="#00000000" MaxLines="6" TextWrapping="Wrap" MaxLength="300" PreviewKeyDown="textBox_DeliverFrom_PreviewKeyDown" FontSize="14" BorderBrush="#00000000" SelectionBrush="#FFFF8133" BorderThickness="0">
             </TextBox>
+
+            <Image Height="22" HorizontalAlignment="Left" Margin="128,442,0,0" Name="urlimage" Stretch="Fill" VerticalAlignment="Top" Width="384" Source="/dieBug;component/Images/f3_input_url.png" Visibility="Hidden" Opacity="1" />
+            <TextBox Height="22" HorizontalAlignment="Left" Margin="128,442,0,0" Name="urlbox" VerticalAlignment="Top" Width="384" BorderBrush="#00000000" Background="#00000000" BorderThickness="0" IsReadOnly="True" Foreground="White" FontSize="13" TextAlignment="Center" Visibility="Hidden" AllowDrop="False"></TextBox>
+
+
+
+            <Image Height="22" HorizontalAlignment="Left" Margin="128,442,0,0" Name="progressbarimg" Stretch="Fill" VerticalAlignment="Top" Width="384" Source="/dieBug;component/Images/progressbar.png" Visibility="Hidden" Opacity="1" />
+            <Image Height="22" Width="131" HorizontalAlignment="Left" Margin="128,442,0,0" Name="progressbarbar" Stretch="Fill" VerticalAlignment="Top" Source="/dieBug;component/Images/progressbar_green.png" Visibility="Hidden" Opacity="1" />
+            
             <Image Margin="128,442,390,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_new_normal.png" Stretch="Fill" StretchDirection="Both" Name="newphoto" MouseEnter="newphoto_MouseEnter" MouseLeave="newphoto_MouseLeave" MouseLeftButtonDown="newphoto_MouseLeftButtonDown" MouseLeftButtonUp="newphoto_MouseLeftButtonUp" />
             <Image Margin="259,442,259,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_upload_normal.png" Stretch="Fill" StretchDirection="Both" Name="upload" MouseEnter="upload_MouseEnter" MouseLeave="upload_MouseLeave" MouseLeftButtonDown="upload_MouseLeftButtonDown" MouseLeftButtonUp="upload_MouseLeftButtonUp" />
             <Image Margin="389,442,129,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_delete_normal.png" Stretch="Fill" StretchDirection="Both" Name="delete" MouseEnter="delete_MouseEnter" MouseLeave="delete_MouseLeave" MouseLeftButtonDown="delete_MouseLeftButtonDown" MouseLeftButtonUp="delete_MouseLeftButtonUp" />
+            
         </Grid>
     </StackPanel>
     <Window.Background>
