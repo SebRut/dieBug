@@ -13,13 +13,16 @@ $datum = date("d.m.Y",(string) $xml->attributes()->timestamp);
 $hexcolor = $xml->attributes()->hexcolor;
 $comphexcolor = $xml->attributes()->comphexcolor;
 
-$lcolor = HexToRGB($hexcolor);
-$cav = (($lcolor["r"]+$lcolor["g"]+$lcolor["b"])/3);
-$lcolor["r"] = ((($cav-$lcolor["r"])/2)+$lcolor["r"])+(230-$cav);
-$lcolor["g"] = ((($cav-$lcolor["g"])/2)+$lcolor["g"])+(230-$cav);
-$lcolor["b"] = ((($cav-$lcolor["b"])/2)+$lcolor["b"])+(230-$cav);
-
-$lcolor = RGBToHex($lcolor["r"],$lcolor["g"],$lcolor["b"]);
+$lcolor = $hexcolor;
+$l2color = HexToRGB($hexcolor);
+$cav = (($l2color["r"]+$l2color["g"]+$l2color["b"])/3);
+//$lcolor = HexToRGB($hexcolor);
+//$cav = (($lcolor["r"]+$lcolor["g"]+$lcolor["b"])/3);
+//$lcolor["r"] = ((($cav-$lcolor["r"])/2)+$lcolor["r"])+(230-$cav);
+//$lcolor["g"] = ((($cav-$lcolor["g"])/2)+$lcolor["g"])+(230-$cav);
+//$lcolor["b"] = ((($cav-$lcolor["b"])/2)+$lcolor["b"])+(230-$cav);
+//
+//$lcolor = RGBToHex($lcolor["r"],$lcolor["g"],$lcolor["b"]);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -35,19 +38,20 @@ $lcolor = RGBToHex($lcolor["r"],$lcolor["g"],$lcolor["b"]);
 	</head>
 	<body>
     	<div id="sidebar" style="background-color:<?php echo $lcolor; ?>">
-        	<div id="sidebarcontainer">
+        	<div id="sidebarcontainer" style="color:<?php echo $cav > 200 ? "#000000" : "#FFFFFF"; ?>;">
             	<div align="right">
-                	<input type="button" value="Großes Bild laden" onClick="$('#srcimg').attr('src','<?php echo $datei; ?>.big.png'); $(this).slideUp();"/>
+                	<input type="button" value="Großes Bild laden" onClick="$('#srcimg').attr('src','<?php echo $datei; ?>.big.png'); $(this).slideUp();"
+                    style="width:100%; height:30px; background-color:<?php echo $lcolor; ?>; border:solid 1px <?php echo $cav > 200 ? "#000000" : "#FFFFFF"; ?>; color:<?php echo $cav > 200 ? "#000000" : "#FFFFFF"; ?>"/>
                 </div>
             	<img id="thumbimg" src="<?php echo $datei; ?>.thumb.png" style="border:solid 5px <?php echo $comphexcolor; ?>;"/><br/>
                 <div id="date"><?php echo $datum; ?></div>
                 <div id="description">
-                	<div style="border-bottom:solid 1px #000000; width:100%; font-size:18px; margin-bottom:-15px">BESCHREIBUNG</div><br/>
+                	<div style="border-bottom:solid 1px <?php echo $cav > 200 ? "#000000" : "#FFFFFF"; ?>; width:100%; font-size:18px; margin-bottom:-15px">BESCHREIBUNG</div><br/>
                 	<?php echo nl2br(htmlentities($description, ENT_NOQUOTES, 'UTF-8')); ?>
                 </div>
             </div>
         </div>
-        <div id="arrow">
+        <div id="arrow" style="border-color: transparent <?php echo $lcolor; ?> transparent transparent;">
         	
         </div>
     	<div id="sidebarblocker">
