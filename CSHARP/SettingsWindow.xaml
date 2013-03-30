@@ -1,8 +1,24 @@
 ﻿<Window x:Class="dieBug.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SettingsWindow" Height="300" Width="300">
-    <Grid>
-        
+        Title="SettingsWindow" Height="0" Width="300" SizeToContent="WidthAndHeight">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Margin="5">Uploadpasswort:</Label>
+        <TextBox Grid.Column="1" Grid.Row="0" Name="PasswordBox" Margin="5"></TextBox>
+        <Label Grid.Column="0" Grid.Row="1" Margin="5">Pfad zur upload.php:</Label>
+        <TextBox Grid.Column="1" Grid.Row="1" ToolTip="http://www.domain.tld/upload.php" Margin="5" Name="UploadUrlPathBox"></TextBox>
+        <CheckBox Name="StartupEnabledCBox" Margin="5" Grid.Row="2">Mit Windows starten</CheckBox>
+        <Button Grid.Column="0" Grid.Row="3" Margin="5" Name="SaveBtn" Click="SaveBtn_Click">Speichern</Button>
+        <Button Grid.Column="1" Grid.Row="3" Margin="5" Name="DiscardBtn" Click="DiscardBtn_Click" >Verwerfen</Button>
     </Grid>
 </Window>

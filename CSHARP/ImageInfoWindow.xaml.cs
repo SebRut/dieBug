@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Net;
 using System.IO;
 using System.Drawing;
+using Microsoft.Win32;
 
 namespace dieBug
 {
@@ -28,14 +29,24 @@ namespace dieBug
             InitializeComponent();
             this.imagePath = imagePath;
             image1.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+
+            RegistryKey diebugKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\dieBug",
+                                                                    RegistryKeyPermissionCheck.ReadSubTree);
+            UploadPath = (string)diebugKey.GetValue("UploadPath", String.Empty);
+            UploadPassword = (string)diebugKey.GetValue("UploadPassword", String.Empty);
+
+            diebugKey.Close();
         }
+
+        private string UploadPassword;
+        private string UploadPath;
 
         private void TransmitPicture()
         {
             NameValueCollection nvc = new NameValueCollection();
             nvc.Add("desc", descriptionbox.Text);
             //TODO URL from Settings
-            HttpUploadFile("http://diebug.franz-bender.de/upload.php", imagePath, "datei", "image/png", nvc);
+            HttpUploadFile((string) UploadPath, imagePath, "datei", "image/png", nvc);
         }
 
         private void textBox_DeliverFrom_PreviewKeyDown(object sender, KeyEventArgs e)

@@ -18,6 +18,7 @@ using System.Windows.Media.Animation;
 using System.IO;
 using Path = System.IO.Path;
 using System.Drawing.Imaging;
+using Microsoft.Win32;
 
 namespace dieBug
 {
@@ -28,7 +29,6 @@ namespace dieBug
     {
         public MainWindow()
         {
-
             baseDir = Environment.GetFolderPath((Environment.SpecialFolder.ApplicationData)) + Path.DirectorySeparatorChar + "dieBug";
             shotDir = baseDir + Path.DirectorySeparatorChar + "shots";
             InitializeComponent();
@@ -36,7 +36,6 @@ namespace dieBug
         }
         private string baseDir;
         private string shotDir;
-
 
         private void InitFileSystem()
         {
@@ -117,6 +116,11 @@ namespace dieBug
         {
             AboutWindow aw = new AboutWindow();
             aw.Show();
+        }
+
+        private void f1_settings_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            OpenSettings();
         }
     }
 }
