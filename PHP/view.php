@@ -12,6 +12,14 @@ $description = $xml->content[0];
 $datum = date("d.m.Y",(string) $xml->attributes()->timestamp);
 $hexcolor = $xml->attributes()->hexcolor;
 $comphexcolor = $xml->attributes()->comphexcolor;
+
+$lcolor = HexToRGB($hexcolor);
+$cav = (($lcolor["r"]+$lcolor["g"]+$lcolor["b"])/3);
+$lcolor["r"] = ((($cav-$lcolor["r"])/2)+$lcolor["r"])+(230-$cav);
+$lcolor["g"] = ((($cav-$lcolor["g"])/2)+$lcolor["g"])+(230-$cav);
+$lcolor["b"] = ((($cav-$lcolor["b"])/2)+$lcolor["b"])+(230-$cav);
+
+$lcolor = RGBToHex($lcolor["r"],$lcolor["g"],$lcolor["b"]);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -26,7 +34,7 @@ $comphexcolor = $xml->attributes()->comphexcolor;
         <script src="../script.js" type="text/javascript"></script>
 	</head>
 	<body>
-    	<div id="sidebar">
+    	<div id="sidebar" style="background-color:<?php echo $lcolor; ?>">
         	<div id="sidebarcontainer">
             	<div align="right">
                 	<input type="button" value="Großes Bild laden" onClick="$('#srcimg').attr('src','<?php echo $datei; ?>.big.png'); $(this).slideUp();"/>
@@ -52,3 +60,36 @@ $comphexcolor = $xml->attributes()->comphexcolor;
         <div id="background" style="background-color: <?php echo $hexcolor; ?>"></div>
 	</body>
 </html>
+<?php
+	function HexToRGB($hex) {
+		$hex = ereg_replace("#", "", $hex);
+		$color = array();
+ 
+		if(strlen($hex) == 3) {
+			$color['r'] = hexdec(substr($hex, 0, 1) . $r);
+			$color['g'] = hexdec(substr($hex, 1, 1) . $g);
+			$color['b'] = hexdec(substr($hex, 2, 1) . $b);
+		}
+		else if(strlen($hex) == 6) {
+			$color['r'] = hexdec(substr($hex, 0, 2));
+			$color['g'] = hexdec(substr($hex, 2, 2));
+			$color['b'] = hexdec(substr($hex, 4, 2));
+		}
+ 
+		return $color;
+	}
+	
+	function mx($val) {
+		return $val > 255 ? 255 : $val;
+	}
+	function RGBToHex($r, $g, $b) {
+		//String padding bug found and the solution put forth by Pete Williams (http://snipplr.com/users/PeteW)
+		$hex = "#";
+		$hex.= str_pad(dechex($r), 2, "0", STR_PAD_LEFT);
+		$hex.= str_pad(dechex($g), 2, "0", STR_PAD_LEFT);
+		$hex.= str_pad(dechex($b), 2, "0", STR_PAD_LEFT);
+ 
+		return $hex;
+	}
+?>
+?>
