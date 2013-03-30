@@ -50,12 +50,6 @@ namespace dieBug
             ImageInfoWindow iiw = new ImageInfoWindow(imagePath);
             this.Visibility = Visibility.Hidden;
             iiw.Show();
-            iiw.Closed += iiw_Closed;
-        }
-
-        void iiw_Closed(object sender, EventArgs e)
-        {
-            this.Visibility = Visibility.Visible;
         }
 
         private void f1_shoot_MouseDown(object sender, MouseButtonEventArgs e)
@@ -75,6 +69,7 @@ namespace dieBug
             string path = Path.Combine(shotDir, filename);
             screenShot.Save(path, ImageFormat.Png);
             OpenImageInfo(path);
+            this.Close();
         }
 
         private void f1_background_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

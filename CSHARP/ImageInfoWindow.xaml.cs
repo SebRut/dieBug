@@ -61,16 +61,15 @@ namespace dieBug
             string desc_encoded = HtmlEncode(description);
             nvc.Add("description", desc_encoded);
             string response = HttpUploadFile((string)UploadPath, imagePath, "datei", "image/png", nvc);
-            /*if (MessageBox.Show("URL to Share\n" + response + "\nDo you want to open it now?", "Upload Finished", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                Process.Start(response);
-            this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(this.Close));*/
             this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Input, new Action(delegate()
             {
                 progressbarimg.Visibility = Visibility.Hidden;
                 progressbarbar.Visibility = Visibility.Hidden;
                 urlimage.Visibility = Visibility.Visible;
                 urlbox.Visibility = Visibility.Visible;
-                urlbox.Text = response;
+                urlbox.Text = response; 
+                urlbox.Focus();
+                urlbox.SelectAll();
             }));
         }
 
@@ -122,6 +121,7 @@ namespace dieBug
         {
             var uriSource = new Uri(@"/dieBug;component/Images/f2_new_hover.png", UriKind.Relative);
             newphoto.Source = new BitmapImage(uriSource);
+
             this.Close();
         }
 
@@ -314,6 +314,13 @@ namespace dieBug
                 image1.Width *= 0.75;
                 isbiggered = false;
             }
+        }
+
+
+        private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
         }
     }
 }
