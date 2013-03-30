@@ -31,7 +31,18 @@ namespace dieBug
         {
             InitializeComponent();
             this.imagePath = imagePath;
-            image1.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+            try
+            {
+                image1.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show("Die Datei konnte nicht gefunden werden!");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
             RegistryKey diebugKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\dieBug", RegistryKeyPermissionCheck.ReadSubTree);
             UploadPath = (string)diebugKey.GetValue("UploadPath", String.Empty);
