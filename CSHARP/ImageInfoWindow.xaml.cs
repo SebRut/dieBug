@@ -31,7 +31,7 @@ namespace dieBug
             this.imagePath = imagePath;
             image1.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
 
-            RegistryKey diebugKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\dieBug",
+            RegistryKey diebugKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\dieBug",
                                                                     RegistryKeyPermissionCheck.ReadSubTree);
             UploadPath = (string)diebugKey.GetValue("UploadPath", String.Empty);
             UploadPassword = (string)diebugKey.GetValue("UploadPassword", String.Empty);
@@ -45,7 +45,7 @@ namespace dieBug
         private void TransmitPicture()
         {
             NameValueCollection nvc = new NameValueCollection();
-            nvc.Add("desc", descriptionbox.Text);
+            nvc.Add("description", descriptionbox.Text);
             string response = HttpUploadFile((string) UploadPath, imagePath, "datei", "image/png", nvc);
             if (MessageBox.Show("URL to Share\n" + response + "\nDo you want to open it now?", "Upload Finished", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 Process.Start(response);
