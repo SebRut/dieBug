@@ -58,8 +58,7 @@ namespace dieBug
                     progressbarimg.Visibility = Visibility.Visible;
                     progressbarbar.Visibility = Visibility.Visible;
                 }));
-            string desc_encoded = HtmlEncode(description);
-            nvc.Add("description", desc_encoded);
+            nvc.Add("description", description);
             string response = HttpUploadFile((string)UploadPath, imagePath, "datei", "image/png", nvc);
             this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Input, new Action(delegate()
             {
@@ -80,23 +79,6 @@ namespace dieBug
                 if (descriptionbox.LineCount > 5)
                     e.Handled = true;
             }
-        }
-
-        public static string HtmlEncode(string text)
-        {
-            char[] chars = System.Security.SecurityElement.Escape(text).ToCharArray();
-            StringBuilder result = new StringBuilder(text.Length + (int)(text.Length * 0.1));
-
-            foreach (char c in chars)
-            {
-                int value = Convert.ToInt32(c);
-                if (value > 127)
-                    result.AppendFormat("&#{0};", value);
-                else
-                    result.Append(c);
-            }
-
-            return result.ToString();
         }
 
         private void newphoto_MouseEnter(object sender, MouseEventArgs e)
