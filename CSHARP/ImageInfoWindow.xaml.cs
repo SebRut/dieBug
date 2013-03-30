@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -45,8 +46,10 @@ namespace dieBug
         {
             NameValueCollection nvc = new NameValueCollection();
             nvc.Add("desc", descriptionbox.Text);
-            //TODO URL from Settings
-            HttpUploadFile((string) UploadPath, imagePath, "datei", "image/png", nvc);
+            string response = HttpUploadFile((string) UploadPath, imagePath, "datei", "image/png", nvc);
+            if (MessageBox.Show("URL to Share\n" + response + "\nDo you want to open it now?", "Upload Finished", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                Process.Start(response);
+            this.Close();
         }
 
         private void textBox_DeliverFrom_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -123,9 +126,10 @@ namespace dieBug
             var uriSource = new Uri(@"/dieBug;component/Images/f2_delete_normal.png", UriKind.Relative);
             delete.Source = new BitmapImage(uriSource);
         }
-
+        
         private void delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+
             var uriSource = new Uri(@"/dieBug;component/Images/f2_delete_active.png", UriKind.Relative);
             delete.Source = new BitmapImage(uriSource);
         }
