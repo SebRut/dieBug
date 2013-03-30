@@ -79,7 +79,6 @@ function comp($r, $g, $b, $shift=192) {
 	return $rgb;
 }
 function RGBToHex($r, $g, $b) {
-		//String padding bug found and the solution put forth by Pete Williams (http://snipplr.com/users/PeteW)
 		$hex = "#";
 		$hex.= str_pad(dechex($r), 2, "0", STR_PAD_LEFT);
 		$hex.= str_pad(dechex($g), 2, "0", STR_PAD_LEFT);
@@ -98,9 +97,6 @@ function colorPalette($imageFile, $numColors, $granularity = 5)
       return false; 
    } 
    $img = @imagecreatefrompng($imageFile);
-   // Andres mentioned in the comments the above line only loads jpegs, 
-   // and suggests that to load any file type you can use this:
-   // $img = @imagecreatefromstring(file_get_contents($imageFile)); 
 
    if(!$img) 
    { 

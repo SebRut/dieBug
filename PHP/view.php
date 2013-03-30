@@ -62,7 +62,7 @@ $lcolor = RGBToHex($lcolor["r"],$lcolor["g"],$lcolor["b"]);
 </html>
 <?php
 	function HexToRGB($hex) {
-		$hex = ereg_replace("#", "", $hex);
+		$hex = str_replace("#", "", $hex);
 		$color = array();
  
 		if(strlen($hex) == 3) {
@@ -83,7 +83,6 @@ $lcolor = RGBToHex($lcolor["r"],$lcolor["g"],$lcolor["b"]);
 		return $val > 255 ? 255 : $val;
 	}
 	function RGBToHex($r, $g, $b) {
-		//String padding bug found and the solution put forth by Pete Williams (http://snipplr.com/users/PeteW)
 		$hex = "#";
 		$hex.= str_pad(dechex($r), 2, "0", STR_PAD_LEFT);
 		$hex.= str_pad(dechex($g), 2, "0", STR_PAD_LEFT);
