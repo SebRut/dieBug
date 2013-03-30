@@ -315,5 +315,30 @@ namespace dieBug
             MainWindow mw = new MainWindow();
             mw.Show();
         }
+
+        private void f1_close_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_hover.png", UriKind.Relative);
+            f1_close.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_close_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_normal.png", UriKind.Relative);
+            f1_close.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_active.png", UriKind.Relative);
+            f1_close.Source = new BitmapImage(uriSource);
+        }
+
+        private void f1_close_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var uriSource = new Uri(@"/dieBug;component/Images/fall_button_close_hover.png", UriKind.Relative);
+            f1_close.Source = new BitmapImage(uriSource);
+            Environment.Exit(0);
+        }
     }
 }

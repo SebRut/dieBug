@@ -24,7 +24,7 @@
             <Image Margin="128,442,390,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_new_normal.png" Stretch="Fill" StretchDirection="Both" Name="newphoto" MouseEnter="newphoto_MouseEnter" MouseLeave="newphoto_MouseLeave" MouseLeftButtonDown="newphoto_MouseLeftButtonDown" MouseLeftButtonUp="newphoto_MouseLeftButtonUp" />
             <Image Margin="259,442,259,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_upload_normal.png" Stretch="Fill" StretchDirection="Both" Name="upload" MouseEnter="upload_MouseEnter" MouseLeave="upload_MouseLeave" MouseLeftButtonDown="upload_MouseLeftButtonDown" MouseLeftButtonUp="upload_MouseLeftButtonUp" />
             <Image Margin="389,442,129,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_delete_normal.png" Stretch="Fill" StretchDirection="Both" Name="delete" MouseEnter="delete_MouseEnter" MouseLeave="delete_MouseLeave" MouseLeftButtonDown="delete_MouseLeftButtonDown" MouseLeftButtonUp="delete_MouseLeftButtonUp" />
-            
+            <Image Name="f1_close" Height="15" HorizontalAlignment="Left" Margin="132,96,0,0" Stretch="Fill" VerticalAlignment="Top" Width="14" Source="/dieBug;component/Images/fall_button_close_normal.png" MouseEnter="f1_close_MouseEnter" MouseLeave="f1_close_MouseLeave" MouseLeftButtonDown="f1_close_MouseLeftButtonDown" MouseLeftButtonUp="f1_close_MouseLeftButtonUp" />
         </Grid>
     </StackPanel>
     <Window.Background>
