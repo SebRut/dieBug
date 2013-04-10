@@ -1,32 +1,12 @@
 ﻿<Window x:Class="dieBug.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="239" Width="226" WindowStyle="None" ResizeMode="NoResize" SizeToContent="WidthAndHeight" AllowsTransparency="True" MouseLeave="Window_MouseLeave" Topmost="True" Background="#00000000">
-    <Window.Resources>
-        <Storyboard x:Key="f1_shoot_rot1">
-            <DoubleAnimation
-            Storyboard.TargetName="f1_shoot"
-            Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
-            From="0"
-            To="45"
-            Duration="0:0:0.5"
-            RepeatBehavior="0x" />
-        </Storyboard>
-        <Storyboard x:Key="f1_shoot_rot2">
-            <DoubleAnimation
-            Storyboard.TargetName="f1_shoot"
-            Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
-            From="45"
-            To="0"
-            Duration="0:0:0.5"
-            RepeatBehavior="0x" />
-        </Storyboard>
-    </Window.Resources>
+        Title="dieBug" Height="239" Width="226" WindowStyle="None" ResizeMode="NoResize" SizeToContent="WidthAndHeight" AllowsTransparency="True" MouseLeave="Window_MouseLeave" Topmost="True" Background="#00000000" Icon="icon.ico">
 
     <Grid Height="99" Width="100" Background="#00000000">
-        <Image Height="99" HorizontalAlignment="Left" Name="f1_background" Stretch="Fill" VerticalAlignment="Top" Width="100" Source="/dieBug;component/Images/f1_back_normal.png" MouseLeftButtonDown="f1_background_MouseLeftButtonDown">
+        <Image Height="99" HorizontalAlignment="Left" Stretch="Fill" VerticalAlignment="Top" Width="100" Source="/dieBug;component/Images/f1_back_normal.png" MouseLeftButtonDown="f1_background_MouseLeftButtonDown">
         </Image>
-        <Image RenderTransformOrigin="0.5, 0.5" Height="67" HorizontalAlignment="Center" Name="f1_shoot" Stretch="Fill" VerticalAlignment="Center" Width="67" Source="/dieBug;component/Images/f1_button_shoot_normal.png" MouseDown="f1_shoot_MouseDown" MouseUp="f1_shoot_MouseUp" Focusable="False" ClipToBounds="True">
+        <Image RenderTransformOrigin="0.5, 0.5" Height="67" HorizontalAlignment="Center" Name="F1Shoot" Stretch="Fill" VerticalAlignment="Center" Width="67" Source="/dieBug;component/Images/f1_button_shoot_normal.png" MouseDown="F1Shoot_MouseDown" MouseUp="F1Shoot_MouseUp" Focusable="False" ClipToBounds="True">
             <Image.RenderTransform>
                 <RotateTransform/>
             </Image.RenderTransform>
@@ -48,7 +28,7 @@
                 </EventTrigger>
             </Image.Triggers>
         </Image>
-        <Image Name="f1_close" Height="15" HorizontalAlignment="Left" Margin="10,10,0,0" Stretch="Fill" VerticalAlignment="Top" Width="14" Source="/dieBug;component/Images/fall_button_close_normal.png" MouseEnter="f1_close_MouseEnter" MouseLeave="f1_close_MouseLeave" MouseLeftButtonDown="f1_close_MouseLeftButtonDown" MouseLeftButtonUp="f1_close_MouseLeftButtonUp" />
-        <Image Name="f1_settings" Height="15" HorizontalAlignment="Left" Margin="76,10,0,0" Stretch="Fill" VerticalAlignment="Top" Width="14" Source="/dieBug;component/Images/fall_button_options_normal.png" MouseEnter="f1_settings_MouseEnter" MouseLeave="f1_settings_MouseLeave" MouseLeftButtonDown="f1_settings_MouseLeftButtonDown" MouseLeftButtonUp="f1_settings_MouseLeftButtonUp" />
+        <Image ToolTip="dieBug beenden" Name="F1Close" Height="15" HorizontalAlignment="Left" Margin="10,10,0,0" Stretch="Fill" VerticalAlignment="Top" Width="14" Source="/dieBug;component/Images/fall_button_close_normal.png" MouseEnter="F1Close_MouseEnter" MouseLeave="F1Close_MouseLeave" MouseLeftButtonDown="F1Close_MouseLeftButtonDown" MouseLeftButtonUp="F1Close_MouseLeftButtonUp" />
+        <Image Name="F1Settings" ToolTip="Einstellungen öffnen" Height="15" HorizontalAlignment="Left" Margin="76,10,0,0" Stretch="Fill" VerticalAlignment="Top" Width="14" Source="/dieBug;component/Images/fall_button_options_normal.png" MouseEnter="F1Settings_MouseEnter" MouseLeave="F1Settings_MouseLeave" MouseLeftButtonDown="F1Settings_MouseLeftButtonDown" MouseLeftButtonUp="F1Settings_MouseLeftButtonUp" />
     </Grid>
 </Window>

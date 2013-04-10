@@ -1,30 +1,60 @@
 ﻿<Window x:Class="dieBug.ImageInfoWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ImageInfoWindow" Height="812" Width="1028" ResizeMode="NoResize" Topmost="False" WindowState="Maximized" WindowStyle="None" AllowsTransparency="True" Closing="Window_Closing_1">
+        Title="ImageInfoWindow" Height="812" Width="1028" ResizeMode="NoResize" Topmost="False" WindowState="Maximized"
+        WindowStyle="None" AllowsTransparency="True" Closing="Window_Closing_1" Icon="icon.ico">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid Height="628" Width="641" Background="#00000000" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image Height="628" HorizontalAlignment="Center" Name="f2_background" Stretch="Fill" VerticalAlignment="Center" Width="641" Source="/dieBug;component/Images/f2_back.png">
+            <Image Height="628" HorizontalAlignment="Center" Stretch="Fill"
+                   VerticalAlignment="Center" Width="641" Source="/dieBug;component/Images/f2_back.png">
             </Image>
-            <Image Name="image1" Stretch="Uniform" Margin="128,94,129,320" MouseLeftButtonUp="image1_MouseLeftButtonUp"></Image>
+            <Image Name="ScreenshotImage" Stretch="Uniform" Margin="128,94,129,320" MouseLeftButtonUp="ScreenshotImage_MouseLeftButtonUp"></Image>
             <Image Width="384" Height="216" Source="/dieBug;component/Images/f2_mask.png" Margin="128,92,129,320"></Image>
-            <Image Width="384" Height="125" Source="/dieBug;component/Images/f2_input_description.png" Margin="128,313,129,190"></Image>
-            <TextBox TextBlock.LineHeight="20" AcceptsReturn="True" TextBlock.LineStackingStrategy="BlockLineHeight" Height="129" HorizontalAlignment="Left" Margin="132,314,0,0" Name="descriptionbox" VerticalAlignment="Top" Width="375" Background="#00000000" MaxLines="6" TextWrapping="Wrap" MaxLength="300" PreviewKeyDown="textBox_DeliverFrom_PreviewKeyDown" FontSize="14" BorderBrush="#00000000" SelectionBrush="#FFFF8133" BorderThickness="0">
+            <Image Width="384" Height="125" Source="/dieBug;component/Images/f2_input_description.png"
+                   Margin="128,313,129,190">
+            </Image>
+            <TextBox TextBlock.LineHeight="20" AcceptsReturn="True" TextBlock.LineStackingStrategy="BlockLineHeight"
+                     Height="129" HorizontalAlignment="Left" Margin="132,314,0,0" Name="descriptionbox"
+                     VerticalAlignment="Top" Width="375" Background="#00000000" MaxLines="6" TextWrapping="Wrap"
+                     MaxLength="300" PreviewKeyDown="textBox_DeliverFrom_PreviewKeyDown" FontSize="14"
+                     BorderBrush="#00000000" SelectionBrush="#FFFF8133" BorderThickness="0">
             </TextBox>
 
-            <Image Height="22" HorizontalAlignment="Left" Margin="128,442,0,0" Name="urlimage" Stretch="Fill" VerticalAlignment="Top" Width="384" Source="/dieBug;component/Images/f3_input_url.png" Visibility="Hidden" Opacity="1" />
-            <TextBox Height="22" HorizontalAlignment="Left" Margin="128,442,0,0" Name="urlbox" VerticalAlignment="Top" Width="384" BorderBrush="#00000000" Background="#00000000" BorderThickness="0" IsReadOnly="True" Foreground="White" FontSize="13" TextAlignment="Center" Visibility="Hidden" AllowDrop="False" SelectionBrush="#FFFF8133"></TextBox>
+            <Image Height="22" HorizontalAlignment="Left" Margin="128,442,0,0" Name="urlimage" Stretch="Fill"
+                   VerticalAlignment="Top" Width="384" Source="/dieBug;component/Images/f3_input_url.png"
+                   Visibility="Hidden" Opacity="1" />
+            <TextBox Height="22" HorizontalAlignment="Left" Margin="128,442,0,0" Name="urlbox" VerticalAlignment="Top"
+                     Width="384" BorderBrush="#00000000" Background="#00000000" BorderThickness="0" IsReadOnly="True"
+                     Foreground="White" FontSize="13" TextAlignment="Center" Visibility="Hidden" AllowDrop="False"
+                     SelectionBrush="#FFFF8133">
+            </TextBox>
 
 
-            <Image Height="22" HorizontalAlignment="Left" Margin="128,442,0,0" Name="progressbarimg" Stretch="Fill" VerticalAlignment="Top" Width="384" Source="/dieBug;component/Images/progressbar.png" Visibility="Hidden" Opacity="1" />
+            <Image Height="22" HorizontalAlignment="Left" Margin="128,442,0,0" Name="progressbarimg" Stretch="Fill"
+                   VerticalAlignment="Top" Width="384" Source="/dieBug;component/Images/progressbar.png"
+                   Visibility="Hidden" Opacity="1" />
             <Border CornerRadius="5" BorderBrush="Black" BorderThickness="0">
-                <Image Height="22" Width="131" HorizontalAlignment="Left" Margin="128,442,0,0" Name="progressbarbar" Stretch="Fill" VerticalAlignment="Top" Source="/dieBug;component/Images/progressbar_green.png" Visibility="Hidden" Opacity="1" />
+                <Image Height="22" Width="131" HorizontalAlignment="Left" Margin="128,442,0,0" Name="progressbarbar"
+                       Stretch="Fill" VerticalAlignment="Top" Source="/dieBug;component/Images/progressbar_green.png"
+                       Visibility="Hidden" Opacity="1" />
             </Border>
-            
-            <Image Margin="128,442,390,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_new_normal.png" Stretch="Fill" StretchDirection="Both" Name="newphoto" MouseEnter="newphoto_MouseEnter" MouseLeave="newphoto_MouseLeave" MouseLeftButtonDown="newphoto_MouseLeftButtonDown" MouseLeftButtonUp="newphoto_MouseLeftButtonUp" />
-            <Image Margin="259,442,259,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_upload_normal.png" Stretch="Fill" StretchDirection="Both" Name="upload" MouseEnter="upload_MouseEnter" MouseLeave="upload_MouseLeave" MouseLeftButtonDown="upload_MouseLeftButtonDown" MouseLeftButtonUp="upload_MouseLeftButtonUp" />
-            <Image Margin="389,442,129,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_delete_normal.png" Stretch="Fill" StretchDirection="Both" Name="delete" MouseEnter="delete_MouseEnter" MouseLeave="delete_MouseLeave" MouseLeftButtonDown="delete_MouseLeftButtonDown" MouseLeftButtonUp="delete_MouseLeftButtonUp" />
-            <Image Name="f1_close" Height="15" HorizontalAlignment="Left" Margin="132,96,0,0" Stretch="Fill" VerticalAlignment="Top" Width="14" Source="/dieBug;component/Images/fall_button_close_normal.png" MouseEnter="f1_close_MouseEnter" MouseLeave="f1_close_MouseLeave" MouseLeftButtonDown="f1_close_MouseLeftButtonDown" MouseLeftButtonUp="f1_close_MouseLeftButtonUp" />
+
+            <Image Margin="128,442,390,164" Width="123" Height="22" Source="/dieBug;component/Images/f2_new_normal.png"
+                   Stretch="Fill" StretchDirection="Both" Name="newphoto" MouseEnter="newphoto_MouseEnter"
+                   MouseLeave="newphoto_MouseLeave" MouseLeftButtonDown="newphoto_MouseLeftButtonDown"
+                   MouseLeftButtonUp="newphoto_MouseLeftButtonUp" />
+            <Image Margin="259,442,259,164" Width="123" Height="22"
+                   Source="/dieBug;component/Images/f2_upload_normal.png" Stretch="Fill" StretchDirection="Both"
+                   Name="upload" MouseEnter="upload_MouseEnter" MouseLeave="upload_MouseLeave"
+                   MouseLeftButtonDown="upload_MouseLeftButtonDown" MouseLeftButtonUp="upload_MouseLeftButtonUp" />
+            <Image Margin="389,442,129,164" Width="123" Height="22"
+                   Source="/dieBug;component/Images/f2_delete_normal.png" Stretch="Fill" StretchDirection="Both"
+                   Name="delete" MouseEnter="delete_MouseEnter" MouseLeave="delete_MouseLeave"
+                   MouseLeftButtonDown="delete_MouseLeftButtonDown" MouseLeftButtonUp="delete_MouseLeftButtonUp" />
+            <Image Name="f1_close" Height="15" HorizontalAlignment="Left" Margin="132,96,0,0" Stretch="Fill"
+                   VerticalAlignment="Top" Width="14" Source="/dieBug;component/Images/fall_button_close_normal.png"
+                   MouseEnter="f1_close_MouseEnter" MouseLeave="f1_close_MouseLeave"
+                   MouseLeftButtonDown="f1_close_MouseLeftButtonDown" MouseLeftButtonUp="f1_close_MouseLeftButtonUp" />
         </Grid>
     </StackPanel>
     <Window.Background>

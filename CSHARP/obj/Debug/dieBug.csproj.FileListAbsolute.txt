@@ -36,3 +36,5 @@ C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\ImageInfoWindow.g.cs
 D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\ImageInfoWindow.baml
 D:\Users\Master\Desktop\HP\2013\dieBug\gitFuck\dieBug\CSHARP\obj\Debug\ImageInfoWindow.g.cs
 C:\Users\Sebastian\Documents\dieBug\CSHARP\obj\Debug\dieBug.csprojResolveAssemblyReference.cache
+C:\Users\Sebastian\Documents\dieBug\CSHARP\bin\Debug\dieBug.exe.CodeAnalysisLog.xml
+C:\Users\Sebastian\Documents\dieBug\CSHARP\bin\Debug\dieBug.exe.lastcodeanalysissucceeded
